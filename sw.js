@@ -2,6 +2,7 @@ self.addEventListener('install', function(event) {
     console.log('Service worker installed');
     event.waitUntil(
         caches.open('rstrnt').then(function(cache) {
+            //pre-caching few required files
             cache.addAll(['/',
                 '/index.html',
                 '/css/styles.css',
@@ -35,7 +36,13 @@ self.addEventListener('fetch', function(event) {
             if (response) {
                 return response;
             } else {
-                return fetch(event.request);
+                //caching dynamically as user visits pages for future offline use.
+                return fetch(event.request).then(function(res) {
+                    return caches.open('rstrnt').then(function(cache) {
+                        cache.put(event.request.url, res.clone());
+                        return res;
+                    })
+                })
             }
         })
     );
