@@ -41,8 +41,8 @@ self.addEventListener('fetch', function(event) {
                     return caches.open('rstrnt').then(function(cache) {
                         cache.put(event.request.url, res.clone());
                         return res;
-                    })
-                })
+                    });
+                });
             }
         })
     );
