@@ -18,6 +18,8 @@ In a terminal, check the version of Python you have: `python -V`. If you have Py
 
 2. With your server running, visit the site: `http://localhost:8000`, and look around for a bit to see what the current experience looks like.
 
+3. In order to load the map make sure to add your api key in `index.html` and `restaurant.html`.
+
 ### What you need to implement
 1. Explore the provided code, and make start making a plan to implement the required features in three areas: responsive design, accessibility and offline use.
 
